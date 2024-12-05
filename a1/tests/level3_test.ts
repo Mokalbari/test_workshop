@@ -1,7 +1,7 @@
 import { expect } from "jsr:@std/expect";
 import { describe, it } from "jsr:@std/testing/bdd";
+import type { Book } from "../../lib/types.ts";
 import { library } from "../functions/level3.ts";
-
 /*
     Rémi a enfin décidé de faire son CRUD.
     Il a créé des tests mais a oublié d'implémenter les fonctions.
@@ -12,12 +12,12 @@ import { library } from "../functions/level3.ts";
 
     Dans une optique TDD, on écrira nos tests avant de commencer à coder.
     Ici vous allez devoir implémenter les fonctions manquantes.
-    La fonction library doit être implémentée de manière à ce que les tests passent.
     Tips : attention aux paramètres et aux valeurs de retour de la fonction.
+
 */
 
 describe("Find books in a library", () => {
-  const books = [
+  const books: Book[] = [
     {
       id: 1,
       title: "CSS Master",
@@ -30,7 +30,7 @@ describe("Find books in a library", () => {
     },
     {
       id: 3,
-      title: "CRUD Master",
+      title: "Props Master",
       author: "Abdou",
     },
   ];
@@ -41,10 +41,18 @@ describe("Find books in a library", () => {
     expect(findABookByID(1)).toBe("CSS Master");
   });
 
+  it("returns null if the book is not found", () => {
+    expect(findABookByID(4)).toBeNull();
+  });
+
   it("finds books by author", () => {
-    expect(findBooksByAuthor("Florian 12")).toBe([
+    expect(findBooksByAuthor("Florian 12")).toEqual([
       "CSS Master",
       "The Putt Party Master",
     ]);
+  });
+
+  it("returns an empty array if no books are found", () => {
+    expect(findBooksByAuthor("John Doe")).toEqual([]);
   });
 });
