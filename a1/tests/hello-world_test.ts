@@ -1,6 +1,6 @@
 import { expect } from "jsr:@std/expect";
 import { describe, it } from "jsr:@std/testing/bdd";
-import { helloWorld } from "./hello-world.ts";
+import { helloWorld } from "../functions/hello-world.ts";
 
 /**
  * // TEST SIMPLE //
@@ -62,7 +62,9 @@ describe("helloWorld function", () => {
 
 /**
  * Pour lancer vos tests, ouvrez la console et écrivez :
- * deno test a1/hello-world_test.ts
+ * deno task hello
+ * ou...
+ * deno test a1/tests/hello-world_test.ts
  * 
  * Vous devriez voir :
  * 
