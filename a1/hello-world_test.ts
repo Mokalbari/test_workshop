@@ -31,23 +31,32 @@ it("says hello world", () => {
 });
 
 /**
- * // BATTERIE DE TESTS //
- * Parfois, on veut faire des tests très similaires ou faire passer une batterie de tests à une fonction
- * Pour tester ses limitations. Plutôt que d'aller dans VSCode et de rentrer plein de valeurs et de tester pour voir
- * si ça marche comme on veut, on peut créer des test qui vont faire ça pour nous.
+ * // Batterie de tests //
  *
- * Dans ce cas, on créer une batterie de tests qui va se charger de jouer toute la série de tests
- * describe("ce que doit faire ma batterie de tests", () => {}) + une fonction qui va jouer tous les tests
- * Ensuite, on enveloppe tous les it dans ce describe.
+ * Maintenant que nous avons vu la structure d’un test,
+ * passons à une série de tests pour valider différents comportements.
+ * Nous allons utiliser `describe` pour regrouper les tests liés à une même fonctionnalité.
  */
 
-describe("the helloWorld function", () => {
-  it("says hello world", () => {
+describe("helloWorld function", () => {
+  it("should return 'Hello World'", () => {
     expect(helloWorld()).toBe("Hello World");
   });
 
-  it("always return hello world in the good format", () => {
-    expect(helloWorld()).not.toBe("hello world");
+  it("should return a string", () => {
+    const result = helloWorld();
+    expect(typeof result).toBe("string");
+  });
+
+  it("should not return an empty string", () => {
+    const result = helloWorld();
+    expect(result.length).toBeGreaterThan(0);
+  });
+
+  it("should not return null or undefined", () => {
+    const result = helloWorld();
+    expect(result).not.toBeNull();
+    expect(result).not.toBeUndefined();
   });
 });
 
@@ -62,7 +71,8 @@ describe("the helloWorld function", () => {
  * the helloWorld function ... // Ca c'est la batterie de tests
  *      says hello world ... ok (1ms)
  *      always return hello world in the good format ... ok (0ms)
- * the helloWorld function ... ok (1ms)
+ *      {...}
+ * the helloWorld function ... ok (1ms) // fin de la batterie de tests
 
 ok | 2 passed (2 steps) | 0 failed (3ms) // les 2 tests sont ok 
  */
