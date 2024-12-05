@@ -14,6 +14,9 @@ import { library } from "../functions/level3.ts";
     Ici vous allez devoir implémenter les fonctions manquantes.
     Tips : attention aux paramètres et aux valeurs de retour de la fonction.
 
+    Pour tester ce fichier :
+    deno task level3
+
 */
 
 describe("Find books in a library", () => {
@@ -53,6 +56,6 @@ describe("Find books in a library", () => {
   });
 
   it("returns an empty array if no books are found", () => {
-    expect(findBooksByAuthor("John Doe")).toEqual([]);
+    expect(findBooksByAuthor("Le Père Tomate")).toEqual([]);
   });
 });
